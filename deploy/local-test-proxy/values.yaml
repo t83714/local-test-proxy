@@ -1,0 +1,6 @@
+port: 80
+targetPort: 80
+# -- remote service endpoint domain. e.g. AWS load balancer endpoint domain
+endpointDomain: 
+localDomain: 
+path: 

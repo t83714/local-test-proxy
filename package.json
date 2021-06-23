@@ -1,0 +1,14 @@
+{
+  "name": "local-test-proxy",
+  "version": "1.0.0",
+  "description": "A local NGINX proxy deployment for making remote web service available under an alternative domain locally with HTTPs",
+  "main": "index.js",
+  "repository": "git@github.com:t83714/local-test-proxy.git",
+  "author": "Jacky Jiang <jacky.jiang@data61.csiro.au>",
+  "license": "Apache2.0",
+  "private": true,
+  "scripts": {
+    "diff-local" : "helm diff upgrade --install --namespace default local-test-proxy -f ./deploy/local.config.yaml ./deploy/local-test-proxy",
+    "deploy-local" : "helm upgrade --debug --install --namespace default local-test-proxy -f ./deploy/local.config.yaml ./deploy/local-test-proxy"
+  }
+}

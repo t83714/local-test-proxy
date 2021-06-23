@@ -1,0 +1,5 @@
+apiVersion: v2
+name: local-test-proxy
+description: A local NGINX proxy deployment for making remote web service available under an alternative domain locally with HTTPs
+type: application
+version: 0.1.0

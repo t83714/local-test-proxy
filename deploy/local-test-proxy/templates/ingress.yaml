@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: selfsigned-issuer
+    nginx.ingress.kubernetes.io/client-body-buffer-size: 10M
+    nginx.ingress.kubernetes.io/proxy-body-size: 100M
+  name: local-test-proxy-ingress
+spec:
+  rules:
+  - host: {{ .Values.localDomain | required "endpointDomain is required for `local-test-proxy` chart" | quote }}
+    http:
+      paths:
+      - backend:
+          serviceName: remote-service
+          servicePort: {{ .Values.port | default 80 }}
+        path: {{ .Values.path | default "/"}}
+  tls:
+  - hosts:
+    - {{ .Values.localDomain }}
+    secretName: local-test-proxy-ingress-cert-tls
